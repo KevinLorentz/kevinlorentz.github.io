@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Kontrol - Kereta Inspeksi IoT</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mqtt/dist/mqtt.min.js"></script>
+    <script src="slider.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <section id="control">
+            <h1>Kontrol Kereta Inspeksi</h1>
+            <div class="input-container">
+                <label for="mqttUsername">Username:</label>
+                <input type="text" id="mqttUsername" placeholder="Enter Username">
+            </div>
+            <div class="input-container">
+                <label for="mqttPassword">Password:</label>
+                <input type="password" id="mqttPassword" placeholder="Enter Password">
+            </div>
+            <button id="connectButton">Kirim</button>
+            <h2>Kontrol Motor Kereta Inspeksi</h2>
+            <div id="controlInfo">
+                <p>Kontrol Arah: <span id="directionDisplay">Berhenti</span></p>
+            </div>
+            <div id="directionButtons">
+                <button id="stopButton" class="direction-button">Berhenti</button>
+                <button id="forwardButton" class="direction-button">Maju</button>
+                <button id="backwardButton" class="direction-button">Mundur</button>
+            </div>
+            <div id="controlInfo">
+                <p>Kontrol Kecepatan: <span id="speedDisplay">0</span></p>
+            </div>
+            <div id="speedControl">
+                <input type="range" id="speed" min="0" max="255">
+            </div>
+        </section>
+
+        <section id="sensorData">
+            <h2>Data Sensor Arus, Suhu & Akselerometer</h2>
+            <div id="sensorValues">
+                <table id="accelerometerTable">
+                    <thead>
+                        <tr>
+                            <th>Sensor</th>
+                            <th>Value</th>
+                            <th class="text-right">Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Arus:</td>
+                            <td id="current">0</td>
+                            <td class="text-right">mA</td>
+                        </tr>
+                        <tr>
+                            <td>Suhu:</td>
+                            <td id="temperature">0</td>
+                            <td class="text-right">°C</td>
+                        </tr>
+                        <tr>
+                            <th>Axis</th>
+                            <th>Value</th>
+                            <th class="text-right">Unit</th>
+                        </tr>
+                        <tr>
+                            <td>X-Axis:</td>
+                            <td id="xAxis">0</td>
+                            <td class="text-right">m/s<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>Y-Axis:</td>
+                            <td id="yAxis">0</td>
+                            <td class="text-right">m/s<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td>Z-Axis:</td>
+                            <td id="zAxis">0</td>
+                            <td class="text-right">m/s<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <th>Getaran</th>
+                            <th>Value</th>
+                            <th class="text-right">Unit</th>
+                        </tr>
+                        <tr>
+                            <td>X-Getaran:</td>
+                            <td id="xVibration">0</td>
+                            <td class="text-right">Hz</td>
+                        </tr>
+                        <tr>
+                            <td>Y-Getaran:</td>
+                            <td id="yVibration">0</td>
+                            <td class="text-right">Hz</td>
+                        </tr>
+                        <tr>
+                            <td>Z-Getaran:</td>
+                            <td id="zVibration">0</td>
+                            <td class="text-right">Hz</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>                       
+        </section>
+    </main>
+
+</body>
+</html>
